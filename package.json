@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"npm run client\"",
+        "server": "node dashboard_server/server.js",
+        "client": "cd dashboard_app && npm start"
+    },
+    "devDependencies": {
+        "concurrently": "^3.6.0"
+    }
+}
