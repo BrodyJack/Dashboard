@@ -22,6 +22,36 @@
   font-size: large;
 }
 
+.terminalList {
+  word-wrap: break-word;
+  overflow: scroll;
+  max-height: 200px;
+  height: auto;
+  background-color: black;
+  color: white;
+  list-style-type: none;
+  text-align: left;
+}
+
+.terminalDiv {
+  margin: auto;
+  text-align: center;
+  width: 315px;
+  height: 200px;
+  background-color: black;
+}
+
+.terminalInput {
+  width: 300px;
+  background-color: black;
+  color: white;
+  border: 1px inset #ccc;
+}
+
+.terminalInput input {
+  border: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
