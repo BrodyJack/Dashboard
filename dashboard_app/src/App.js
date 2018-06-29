@@ -21,7 +21,7 @@ class App extends Component {
   addText = event => {
     if (event.key === 'Enter') {
       this.setState({
-        text: this.state.messages.push('>  ' + event.target.value)
+        messages: this.state.messages.concat('>  ' + event.target.value)
       });
       event.target.value = '';
     }
