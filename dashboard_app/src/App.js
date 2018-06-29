@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Terminal from './Terminal.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -16,11 +17,8 @@ class App extends Component {
     }
   };
 
-  displayMessage = (message, index) => {
-    return <li key={index}>{message}</li>;
-  };
   render() {
-    fetch('/test');
+    //fetch('/test');
 
     return (
       <div className="App">
@@ -28,14 +26,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <div className="terminalDiv">
-          <ul className="terminalList">
-            {this.state.messages.map(this.displayMessage)}
-          </ul>
-        </div>
-        <span className="terminalInput">
-          > <input className="terminalInput" onKeyPress={this.addText} />
-        </span>
+        <Terminal messages={this.state.messages} addText={this.addText} />
       </div>
     );
   }
