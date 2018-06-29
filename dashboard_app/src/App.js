@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Terminal from './Terminal.js';
+import socketIOClient from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,8 +8,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      socket: socketIOClient()
     };
+
+    this.state.socket.on('server message', message => {
+      this.setState({
+        text: this.state.messages.push('SERVER: ' + message)
+      });
+    });
   }
 
   componentDidUpdate() {
@@ -23,13 +31,12 @@ class App extends Component {
       this.setState({
         messages: this.state.messages.concat('>  ' + event.target.value)
       });
+      this.state.socket.emit('message entered', event.target.value);
       event.target.value = '';
     }
   };
 
   render() {
-    //fetch('/test');
-
     return (
       <div className="App">
         <header className="App-header">
