@@ -9,12 +9,14 @@ class App extends Component {
     super(props);
     this.state = {
       messages: [],
-      socket: socketIOClient()
+      socket: socketIOClient(),
+      waiting: false
     };
 
     this.state.socket.on('server message', message => {
       this.setState({
-        text: this.state.messages.push('SERVER: ' + message)
+        text: this.state.messages.push('SERVER: ' + message),
+        waiting: false
       });
     });
   }
@@ -32,6 +34,9 @@ class App extends Component {
         messages: this.state.messages.concat('>  ' + event.target.value)
       });
       this.state.socket.emit('message entered', event.target.value);
+      this.setState({
+        waiting: true
+      });
       event.target.value = '';
     }
   };
@@ -43,7 +48,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Terminal messages={this.state.messages} addText={this.addText} />
+        <Terminal
+          messages={this.state.messages}
+          addText={this.addText}
+          disabled={this.state.waiting}
+        />
       </div>
     );
   }

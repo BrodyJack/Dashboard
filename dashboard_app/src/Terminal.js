@@ -22,6 +22,7 @@ export default function Terminal(props) {
           id="textInput"
           className="terminalInput"
           onKeyPress={props.addText}
+          disabled={props.disabled}
         />
       </span>
     </div>
