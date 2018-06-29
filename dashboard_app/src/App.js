@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: ['Welcome to the meme... type a message to meme.....']
+      messages: []
     };
   }
 
