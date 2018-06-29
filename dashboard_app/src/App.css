@@ -25,7 +25,7 @@
 .terminalList {
   word-wrap: break-word;
   overflow: scroll;
-  max-height: 200px;
+  max-height: 199px;
   height: auto;
   background-color: black;
   color: white;
