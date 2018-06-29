@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    messages: ['Welcome to the meme... type a message to meme.....']
+    messages: []
   };
 
   addText = event => {

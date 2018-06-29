@@ -50,6 +50,7 @@
 
 .terminalInput input {
   border: 0;
+  outline: none;
 }
 
 @keyframes App-logo-spin {
