@@ -1,8 +1,6 @@
 import React from 'react';
 
 function displayMessage(message, index) {
-  var messageList = document.getElementById('messageList');
-  console.log(messageList);
   return <li key={index}>{message}</li>;
 }
 
