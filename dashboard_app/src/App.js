@@ -1,59 +1,77 @@
 import React, { Component } from 'react';
-import Terminal from './Terminal.js';
-import socketIOClient from 'socket.io-client';
-import logo from './logo.svg';
+import TextAdventurePage from './TextAdventure';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Column, Row } from 'simple-flexbox';
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+);
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>Components</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.path}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.path}
+      render={() => <h3>Please select a topic.</h3>}
+    />
+  </div>
+);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      messages: [],
-      socket: socketIOClient(),
-      waiting: false
-    };
-
-    this.state.socket.on('server message', message => {
-      this.setState({
-        text: this.state.messages.push('SERVER: ' + message),
-        waiting: false
-      });
-    });
-  }
-
-  componentDidUpdate() {
-    var messageList = document.getElementById('messageList');
-    if (messageList != null) {
-      messageList.scrollTop = messageList.scrollHeight;
-    }
-  }
-
-  addText = event => {
-    if (event.key === 'Enter') {
-      this.setState({
-        messages: this.state.messages.concat('>  ' + event.target.value)
-      });
-      this.state.socket.emit('message entered', event.target.value);
-      this.setState({
-        waiting: true
-      });
-      event.target.value = '';
-    }
-  };
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Terminal
-          messages={this.state.messages}
-          addText={this.addText}
-          disabled={this.state.waiting}
-        />
-      </div>
+      <Router>
+        <div>
+          <Row horizontal="around" flexGrow={1} className="webheader">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/topics">Topics</Link>
+            </li>
+            <li>
+              <Link to="/game">Text Adventure</Link>
+            </li>{' '}
+          </Row>
+
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/topics" component={Topics} />
+          <Route path="/game" component={TextAdventurePage} />
+        </div>
+      </Router>
     );
   }
 }
