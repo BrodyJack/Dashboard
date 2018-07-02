@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextAdventurePage from './TextAdventure';
+import FoodRecommenderPage from './FoodRecommender';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Column, Row } from 'simple-flexbox';
@@ -63,6 +64,9 @@ class App extends Component {
             </li>
             <li>
               <Link to="/game">Text Adventure</Link>
+            </li>
+            <li>
+              <Link to="/food">Food Recommender</Link>
             </li>{' '}
           </Row>
 
@@ -70,6 +74,7 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} />
           <Route path="/game" component={TextAdventurePage} />
+          <Route path="/food" component={FoodRecommenderPage} />
         </div>
       </Router>
     );
