@@ -4,6 +4,7 @@ import FoodRecommenderPage from './FoodRecommender';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Column, Row } from 'simple-flexbox';
+import Header from './Header';
 
 const Home = () => (
   <div>
@@ -50,33 +51,38 @@ const Topics = ({ match }) => (
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Row horizontal="around" flexGrow={1} className="webheader">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-            <li>
-              <Link to="/game">Text Adventure</Link>
-            </li>
-            <li>
-              <Link to="/food">Food Recommender</Link>
-            </li>{' '}
-          </Row>
+      <div className="App">
+        <Router>
+          <div>
+            <Route path="/" component={Header} />
+            <div>
+              <Row horizontal="around" flexGrow={1} className="webheader">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/topics">Topics</Link>
+                </li>
+                <li>
+                  <Link to="/game">Text Adventure</Link>
+                </li>
+                <li>
+                  <Link to="/food">Food Recommender</Link>
+                </li>{' '}
+              </Row>
 
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
-          <Route path="/game" component={TextAdventurePage} />
-          <Route path="/food" component={FoodRecommenderPage} />
-        </div>
-      </Router>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/topics" component={Topics} />
+              <Route path="/game" component={TextAdventurePage} />
+              <Route path="/food" component={FoodRecommenderPage} />
+            </div>
+          </div>
+        </Router>
+      </div>
     );
   }
 }

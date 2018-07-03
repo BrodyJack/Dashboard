@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Terminal from './Terminal.js';
 import socketIOClient from 'socket.io-client';
-import logo from './logo.svg';
 import './App.css';
 
 class TextAdventure extends Component {
@@ -47,17 +46,11 @@ class TextAdventure extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Terminal
-          messages={this.state.messages}
-          addText={this.addText}
-          disabled={this.state.waiting}
-        />
-      </div>
+      <Terminal
+        messages={this.state.messages}
+        addText={this.addText}
+        disabled={this.state.waiting}
+      />
     );
   }
 }
