@@ -55,6 +55,7 @@
 
 .webheader {
   background-color: white;
+  list-style-type: none;
 }
 
 .searchbar {

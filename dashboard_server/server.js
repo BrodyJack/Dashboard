@@ -4,7 +4,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server);
 
 const MongoClient = require('mongodb').MongoClient;
-const MONGO_URL = 'mongodb://<user>:<pass>@ds125001.mlab.com:25001/mealinfo';
+const MONGO_URL = 'mongodb://server:1234AbCd@ds125001.mlab.com:25001/mealinfo';
 var db;
 var debug = true;
 

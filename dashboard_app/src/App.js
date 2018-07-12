@@ -5,6 +5,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Column, Row } from 'simple-flexbox';
 import Header from './Header';
+import BookClub from './BookClub';
 
 const Home = () => (
   <div>
@@ -71,7 +72,10 @@ class App extends Component {
                 </li>
                 <li>
                   <Link to="/food">Food Recommender</Link>
-                </li>{' '}
+                </li>
+                <li>
+                  <Link to="/bookClub">Book Club</Link>
+                </li>
               </Row>
 
               <Route exact path="/" component={Home} />
@@ -79,6 +83,7 @@ class App extends Component {
               <Route path="/topics" component={Topics} />
               <Route path="/game" component={TextAdventurePage} />
               <Route path="/food" component={FoodRecommenderPage} />
+              <Route path="/bookClub" component={BookClub} />
             </div>
           </div>
         </Router>
