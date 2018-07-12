@@ -1,11 +1,11 @@
 {
-    "scripts": {
-        "start": "concurrently \"npm run server\" \"npm run client\"",
-        "server": "node dashboard_server/server.js",
-        "client": "cd dashboard_app && npm start",
-        "install-all": "npm install && cd dashboard_app && npm install && cd ../dashboard_server && npm install && cd ../"
-    },
-    "devDependencies": {
-        "concurrently": "^3.6.0"
-    }
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd dashboard_server && npm start",
+    "client": "cd dashboard_app && npm start",
+    "install-all": "npm install && cd dashboard_app && npm install && cd ../dashboard_server && npm install && cd ../"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  }
 }
